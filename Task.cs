@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskProject
 {
-    class Tasks : ICloneable
+    public class Tasks : ICloneable
     {
         public string TaskName { get; set; } = string.Empty;
         public string Tag { get; set; } = string.Empty;

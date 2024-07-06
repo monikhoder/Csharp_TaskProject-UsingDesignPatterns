@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace TaskProject
 {
-    public interface ISearch
+    public interface ISearchAdapter
     {
-        List<Tasks> Search(List<Tasks> tasks, string keyword);
+        List<Tasks> Search(List<Tasks> tasks, string query);
     }
-    public class TaskSearch : ISearch
+    public class SearchAdapter : ISearchAdapter
     {
-        public List<Tasks> Search(List<Tasks> tasks, string keyword)
+        public List<Tasks> Search(List<Tasks> tasks, string query)
         {
-            return tasks.Where(t => t.TaskName.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
+            return tasks.Where(t => t.TaskName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+                                    t.Tag.Contains(query, StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }
 

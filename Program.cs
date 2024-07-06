@@ -5,8 +5,9 @@ internal class Program
     {
         List<Tasks> tasks = new List<Tasks>();
         Tasks task = new Tasks();
-        ViewAdapter adapter = new ListAdapter(tasks);        
-        int option = 0;
+        ViewAdapter adapter = new ListAdapter(tasks);
+        ISearchAdapter searchAdapter = new SearchAdapter();
+            int option = 0;
 
         while (true)
         {
@@ -80,8 +81,15 @@ internal class Program
 
         void SearchTasks()
         {
-            // Implementation here
-        }
+                Console.WriteLine(@"------ Search Task ------");
+                Console.Write("Enter search query: ");
+                string query = Console.ReadLine() ?? string.Empty;
+                List<Tasks> searchResults = searchAdapter.Search(tasks, query);
+                foreach (var t in searchResults)
+                {
+                    Console.WriteLine($"Task: {t.TaskName}, Priority: {t.Priority}, Execution Date: {t.ExecutionDate.ToShortDateString()}, Tag: {t.Tag}");
+                }
+            }
 
         void SaveToFileTasks()
         {
