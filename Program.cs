@@ -115,8 +115,20 @@ internal class Program
 
         void DeleteTasks()
         {
-            // Implementation here
-        }
+                Console.WriteLine(@"------ Delete Task ------");
+                ListTasks();
+                Console.Write("Enter task number to delete: ");
+                if (int.TryParse(Console.ReadLine(), out int taskNumber) && taskNumber > 0 && taskNumber <= tasks.Count)
+                {
+                    Tasks taskToDelete = tasks[taskNumber - 1];
+                    tasks.Remove(taskToDelete);
+                    Console.WriteLine("Task deleted successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid task number.");
+                }
+            }
 
         void SearchTasks()
         {
