@@ -1,7 +1,7 @@
 ﻿namespace TaskProject{
 internal class Program
 {
-    public void Main(string[] args)
+    public static void Main(string[] args)
     {
         List<Tasks> tasks = new List<Tasks>();
         Tasks task = new Tasks();
@@ -80,18 +80,7 @@ internal class Program
 
         void SearchTasks()
         {
-            Console.WriteLine(@"------ Search Task ------");
-            Console.Write("Enter keyword to search: ");
-            string keyword = Console.ReadLine() ?? "";
-
-            ISearch search = new TaskSearch();
-            List<Tasks> result = search.Search(tasks, keyword);
-
-            Console.WriteLine("Search Results:");
-            foreach (var task in result)
-            {
-                Console.WriteLine($"Task Name: {task.TaskName}, Priority: {task.Priority}, Execution Date: {task.ExecutionDate.ToShortDateString()}, Tag: {task.Tag}");
-            }
+            // Implementation here
         }
 
         void DownloadTasks()
