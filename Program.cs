@@ -30,7 +30,7 @@ internal class Program
                     case 3: UpdateTasks(); break;
                     case 4: DeleteTasks(); break;
                     case 5: SearchTasks(); break;
-                    case 6: DownloadTasks(); break;
+                    case 6: SaveToFileTasks(); break;
                     case 7: adapter = new GridAdapter(tasks); ListTasks(); break;
                     case 8: return;
                 }
@@ -83,7 +83,7 @@ internal class Program
             // Implementation here
         }
 
-        void DownloadTasks()
+        void SaveToFileTasks()
         {
             // Implementation here
         }
