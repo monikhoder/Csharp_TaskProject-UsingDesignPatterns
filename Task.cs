@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TaskProject
 {
-    public class Tasks : ICloneable
+     public  class Tasks : ICloneable
     {
-        public string TaskName { get; set; } = string.Empty;
+        public  string TaskName { get; set; } = string.Empty;
         public string Tag { get; set; } = string.Empty;
         public int Priority { get; set; }//the lowest value is the highest priority
         public DateTime ExecutionDate { get; set; }

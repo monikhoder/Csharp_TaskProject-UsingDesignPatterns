@@ -7,7 +7,8 @@ internal class Program
         Tasks task = new Tasks();
         ViewAdapter adapter = new ListAdapter(tasks);
         ISearchAdapter searchAdapter = new SearchAdapter();
-            int option = 0;
+
+        int option = 0;
 
         while (true)
         {
@@ -71,8 +72,46 @@ internal class Program
 
         void UpdateTasks()
         {
-            // Implementation here
-        }
+                Console.WriteLine(@"------ Update Task ------");
+                ListTasks();
+                Console.Write("Enter task number to update: ");
+                if (int.TryParse(Console.ReadLine(), out int taskNumber) && taskNumber > 0 && taskNumber <= tasks.Count)
+                {
+                    Tasks taskToUpdate = tasks[taskNumber - 1];
+                    Console.WriteLine($"Updating Task: {taskToUpdate.TaskName}");
+                    Console.Write($"Task Name [{taskToUpdate.TaskName}]: ");
+                    string taskName = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(taskName))
+                    {
+                        taskToUpdate.TaskName = taskName;
+                    }
+
+                    Console.Write($"Priority [{taskToUpdate.Priority}]: ");
+                    if (int.TryParse(Console.ReadLine(), out int prio))
+                    {
+                        taskToUpdate.Priority = prio;
+                    }
+
+                    Console.Write($"Execution date [{taskToUpdate.ExecutionDate.ToShortDateString()}]: ");
+                    if (DateTime.TryParse(Console.ReadLine(), out DateTime date))
+                    {
+                        taskToUpdate.ExecutionDate = date;
+                    }
+
+                    Console.Write($"Tag [{taskToUpdate.Tag}]: ");
+                    string tag = Console.ReadLine() ?? string.Empty;
+                    if (tag != string.Empty)
+                    {
+                        taskToUpdate.Tag = tag;
+                    }
+
+                    Console.WriteLine("Task updated successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid task number.");
+                }
+            }
 
         void DeleteTasks()
         {
