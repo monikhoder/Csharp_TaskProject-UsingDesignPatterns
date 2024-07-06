@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TaskProject
 {
-    abstract class Adapter
+    abstract class ViewAdapter
     {
 
         public abstract void Display();
     }
-    class ListAdapter : Adapter
+    class ListAdapter : ViewAdapter
     {
         protected List<Tasks> tasks;
 
@@ -21,7 +21,7 @@ namespace TaskProject
         }
 
         public override void Display()
-        {//display as a list
+        {   //display as a list
             foreach (var item in tasks)
             {
                 Console.WriteLine($"{item.TaskName,-20}{item.Priority,3} " +
@@ -36,7 +36,7 @@ namespace TaskProject
         }
 
         public override void Display()
-        {//display as a list
+        {   //display as a grid
             for (int i = 0; i < tasks.Count; i += 2)
             {
                 var item = tasks[i];
