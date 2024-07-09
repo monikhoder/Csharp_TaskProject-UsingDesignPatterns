@@ -1,4 +1,5 @@
-﻿namespace TaskProject{
+﻿using System.IO;
+namespace TaskProject{
 internal class Program
 {
     public static void Main(string[] args)
@@ -7,7 +8,7 @@ internal class Program
         Tasks task = new Tasks();
         ViewAdapter adapter = new ListAdapter(tasks);
         ISearchAdapter searchAdapter = new SearchAdapter();
-
+        IFileSaveAdapter fileSaveAdapter = new FileSaveAdapter();
         int option = 0;
 
         while (true)
@@ -19,7 +20,7 @@ internal class Program
  3. Update task
  4. Delete task
  5. Search task
- 6. Download tasks
+ 6. Save tasks
  7. Switch views
  8. Exit");
             Console.Write("Choose option:");
@@ -144,8 +145,12 @@ internal class Program
 
         void SaveToFileTasks()
         {
-            // Implementation here
+                Console.Write("Enter file path and file name to save tasks ( C:\\Data\\file.txt) : ");
+                string filePath = Console.ReadLine() ?? "tasks.txt";
+                fileSaveAdapter.SaveToFile(tasks, filePath);
+                Console.WriteLine("Tasks saved to file successfully.");
+            }
+        
         }
-    }
 }
 }
